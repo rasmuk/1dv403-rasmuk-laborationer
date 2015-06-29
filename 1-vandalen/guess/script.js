@@ -5,7 +5,7 @@ window.onload = function(){
 	var secret = Math.floor( Math.random() * 100)+1;
 	var countguess=0;
 	console.log(secret);
-//	var secret = 50; // Detta tal behöver bytas ut mot ett slumpat tal.
+	//	var secret = 50; // Detta tal behöver bytas ut mot ett slumpat tal.
 	
 	// I denna funktion ska du skriva koden för att hantera "spelet"
 	var guess = function(number){
@@ -16,11 +16,9 @@ window.onload = function(){
 		// Plats för förändring.
 		var answer = [];
 		if(!isNaN(number)){
-			if(number===secret){
-//				var tmp="Grattis du vann! Det hemliga talet var "+secret+" och du behövde "+this.countguess+" gissningar för att hitta det.";
-				var tmp="Grattis du vann! Det hemliga talet var och du behövde gissningar för att hitta det.";
+			if(number==secret){
 				answer[0]=true;
-				answer[1]=tmp;
+				answer[1]="Grattis du vann! Det hemliga talet var "+secret+" och du behövde "+countguess+" gissningar för att hitta det.";
 			}
 			else if(number < 0 || number > 100){
 				answer[0]=false;
