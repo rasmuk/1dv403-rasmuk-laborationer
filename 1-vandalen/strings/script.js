@@ -8,10 +8,20 @@ window.onload = function(){
 		// Returnera den konverterade strängen.
 		// Vid fel, kasta ett undantag med ett meddelande till användaren. 
 	
+	var lower = /[A-Z]/g;
+	var upper = /[a-z]/g;
+	var matchLower;
+	var matchUpper;
+	var input = str;
+	var newstr = str;
+	
+	while(matchLower == lower.exec(input))
+		newstr.charAt(matchLower).toUpperCase();
+		
+	while(matchUpper == upper.exec(input))
+		newstr.charAt(matchUpper).toLowerCase();
 
-
-
-
+	return newstr;
 
 
 	};
