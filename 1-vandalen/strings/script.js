@@ -8,22 +8,33 @@ window.onload = function(){
 		// Returnera den konverterade strängen.
 		// Vid fel, kasta ett undantag med ett meddelande till användaren. 
 	
-	var lower = /[A-Z]/g;
-	var upper = /[a-z]/g;
-	var matchLower;
-	var matchUpper;
+	var slength = str.length;
+	var lower = /[a-z|åäö]/g;
+	var upper = /[A-Z|ÅÄÖ]/g;
+	var matchLower, matchUpper;
 	var input = str;
 	var newstr = str;
 	
-	while(matchLower == lower.exec(input))
-		newstr.charAt(matchLower).toUpperCase();
-		
-	while(matchUpper == upper.exec(input))
-		newstr.charAt(matchUpper).toLowerCase();
-
+	if(slength == 0){
+		throw new Error("Du måste mata in någonting!");
+	}
+	
+	while(matchLower = lower.exec(input)){
+		if(matchLower.index == 0){
+			newstr = newstr.substr(0,1).toUpperCase()+newstr.substr(1);
+		}else if (0 < matchLower.index < slength){
+			newstr = newstr.substr(0,matchLower.index)+newstr.substr(matchLower.index,1).toUpperCase()+newstr.substr(matchLower.index+1);
+		}
+	}
+	while(matchUpper = upper.exec(input)){
+		if(matchUpper.index == 0){
+			newstr = newstr.substr(0,1).toLowerCase()+newstr.substr(1);
+		}else if (0 < matchUpper.index < slength){
+			newstr = newstr.substr(0,matchUpper.index)+newstr.substr(matchUpper.index,1).toLowerCase()+newstr.substr(matchUpper.index+1);
+		}
+	}
+	newstr = newstr.replace(/[aA]/g,'#')	;
 	return newstr;
-
-
 	};
 	// ------------------------------------------------------------------------------
 
