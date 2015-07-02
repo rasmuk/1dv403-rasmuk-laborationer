@@ -4,14 +4,22 @@ window.onload = function(){
 
 	
 	var birthday = function(date){
+		var bday ;
 		
-
-
-			// Din kod här.
-
-
-
-
+		if (date.length == 0) {
+			throw new Error("Du måste fylla i något!");
+		} else{
+			var indate = new Date(date);
+			var indate = new Date(date);
+			var now = new Date();
+			if (indate.getTime()-now.getTime()<-86400000){
+				bday = new Date(indate.getFullYear()+1, indate.getMonth(), indate.getDate());
+			}else{
+				bday = indate;
+			}
+			var diff = Math.ceil((bday.getTime()-now.getTime())/(60*60*24*1000));
+			return diff;
+		}
 	};
 	// ------------------------------------------------------------------------------
 
