@@ -5,7 +5,6 @@ window.onload = function(){
 	
 	var birthday = function(date){
 		var bday ;
-		
 		if (date.length == 0) {
 			throw new Error("Du måste fylla i något!");
 		} else{
